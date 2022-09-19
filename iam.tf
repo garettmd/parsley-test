@@ -74,19 +74,19 @@ resource "aws_iam_role_policy_attachment" "developer_role_dyanmo_rw" {
 
 data "aws_iam_policy_document" "dynamodb_parsley_ro" {
   statement {
-  sid    = "ReadOnlyAPIActionsOnBooks"
-  effect = "Allow"
-  actions = [
-    "dynamodb:GetItem",
-    "dynamodb:BatchGetItem",
-    "dynamodb:Scan",
-    "dynamodb:Query",
-    "dynamodb:ConditionCheckItem",
-  ]
-  resources = [
-    aws_dynamodb_table.parsley.arn
-  ]
-}
+    sid    = "ReadOnlyAPIActionsOnBooks"
+    effect = "Allow"
+    actions = [
+      "dynamodb:GetItem",
+      "dynamodb:BatchGetItem",
+      "dynamodb:Scan",
+      "dynamodb:Query",
+      "dynamodb:ConditionCheckItem",
+    ]
+    resources = [
+      aws_dynamodb_table.parsley.arn
+    ]
+  }
 }
 
 resource "aws_iam_policy" "dynamodb_parsley_ro" {
@@ -96,8 +96,8 @@ resource "aws_iam_policy" "dynamodb_parsley_ro" {
 }
 
 resource "aws_iam_role_policy_attachment" "pm_role_dynamo_ro" {
-  role   = aws_iam_role.product_manager.name
-  policy = aws_iam_policy.dynamodb_parsley_ro.arn
+  role       = aws_iam_role.product_manager.name
+  policy_arn = aws_iam_policy.dynamodb_parsley_ro.arn
 }
 
 resource "aws_iam_role" "product_manager" {
