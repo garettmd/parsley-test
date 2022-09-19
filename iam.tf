@@ -44,13 +44,13 @@ data "aws_iam_policy_document" "dynamodb_parsley_rw" {
 }
 
 resource "aws_iam_policy" "dynamodb_parsley_rw" {
-  name        = "DynamoDB Parsley Table Read-Write"
+  name        = "dynamodb-parsley-rw"
   description = "Provides read-write access to DynamoDB table"
   policy      = data.aws_iam_policy_document.dynamodb_parsley_rw.json
 }
 
 resource "aws_iam_role" "developer" {
-  name = "Developer Role"
+  name = "developer-role"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
@@ -88,7 +88,7 @@ data "aws_iam_policy_document" "dynamodb_parsley_ro" {
 }
 
 resource "aws_iam_policy" "dynamodb_parsley_ro" {
-  name        = "DynamoDB Parsley Table Read-Only"
+  name        = "dynamodb-parsley-ro"
   description = "Provides read-only access to DynamoDB table"
   policy      = data.aws_iam_policy_document.dynamodb_parsley_ro.json
 }
@@ -99,7 +99,7 @@ resource "aws_iam_role_policy_attachment" "pm_role_dynamo_ro" {
 }
 
 resource "aws_iam_role" "product_manager" {
-  name = "Product Manager Role"
+  name = "product-manager-role"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
