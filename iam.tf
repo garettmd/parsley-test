@@ -51,20 +51,6 @@ resource "aws_iam_policy" "dynamodb_parsley_rw" {
 
 resource "aws_iam_role" "developer" {
   name = "developer-role"
-
-  assume_role_policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Action = "sts:AssumeRole"
-        Effect = "Allow"
-        Sid    = ""
-        Principal = {
-          Service = "ec2.amazonaws.com"
-        }
-      },
-    ]
-  })
 }
 
 resource "aws_iam_role_policy_attachment" "developer_role_dyanmo_rw" {
@@ -102,18 +88,4 @@ resource "aws_iam_role_policy_attachment" "pm_role_dynamo_ro" {
 
 resource "aws_iam_role" "product_manager" {
   name = "product-manager-role"
-
-  assume_role_policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Action = "sts:AssumeRole"
-        Effect = "Allow"
-        Sid    = ""
-        Principal = {
-          Service = "ec2.amazonaws.com"
-        }
-      },
-    ]
-  })
 }
